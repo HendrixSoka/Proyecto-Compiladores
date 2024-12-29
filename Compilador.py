@@ -126,15 +126,14 @@ def print_ast(node, level=0):
     for child in node.children:
         print_ast(child, level + 1)
 
-source_code = """
-public class estudiante{
-    int cr , t,e,q;
-    ArrayList<Persona> listaPersonas;
-    string nombre;
-    int edad;
-    float var34h5;
-}
-"""
+file_path = "codigo.txt" 
+
+def Leer_archivo(file_path):
+    with open(file_path, "r") as file:
+        source_code = file.read()
+    return source_code
+
+source_code = Leer_archivo(file_path)
 tokens = analizador_lex(source_code)
 print(tokens)
 parser = Parser(tokens)
